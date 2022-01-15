@@ -1,20 +1,21 @@
 import csv
 
 # global file path 
-filePath = "../data/market_price.csv"
+filePath = "data/market_price.csv"
+
 
 # read the csv file to get market data
 def readData(filePath):
-    marketDataTable = list()
-    try:
-    	fileIn = open(filePath, 'r')
-    	reader = csv.reader(fileIn)
-    	for row in reader:
-    		marketDataTable.append(row)
-    finally:
-    	fileIn.close()
-    
-    return marketDataTable
+	marketDataTable = list()
+	try:
+		fileIn = open(filePath, 'r')
+		reader = csv.reader(fileIn)
+		for row in reader:
+			marketDataTable.append(row)
+	finally:
+		fileIn.close()
+		
+	return marketDataTable
 
 # calculate vwap value
 def calc_vwap(marketDataTable):
@@ -44,8 +45,8 @@ def calc_twap(marketDataTable):
 	return price_sum / n
 
 if __name__ == "__main__":
-	print "reading market data"
+	print("reading market data")
 	marketDataTable = readData(filePath)
-	print "calculating TWAP and VWAP"
-	print "VWAP: ", calc_vwap(marketDataTable) 
-	print "TWAP: ", calc_twap(marketDataTable) 
+	print("calculating TWAP and VWAP")
+	print("VWAP: ", calc_vwap(marketDataTable)) 
+	print("TWAP: ", calc_twap(marketDataTable)) 
